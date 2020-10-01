@@ -1,6 +1,9 @@
 {
-  "devToolsPort": 19003,
-  "expoServerPort": 19004,
-  "packagerPort": 19005,
-  "packagerPid": 36193
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19003,
+  "packagerPid": 49424,
+  "expoServerNgrokUrl": "https://b8-8zb.michaelnouwens.vidnation.exp.direct",
+  "packagerNgrokUrl": "https://packager.b8-8zb.michaelnouwens.vidnation.exp.direct",
+  "ngrokPid": 49447
 }
