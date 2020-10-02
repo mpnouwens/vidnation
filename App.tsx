@@ -1,8 +1,12 @@
 import React from "react";
-import { Image, Text, View } from "react-native";
+import { View } from "react-native";
 import { Asset } from "expo-asset";
 import { AppLoading } from "expo";
-import { Search } from "./screens";
+import { Provider } from "react-redux";
+import "redux";
+import { store } from "./store";
+import { NavigationContainer } from "@react-navigation/native";
+import TabNavigator from "./navigation/TabNavigator";
 
 export default class App extends React.Component {
   state = {
@@ -21,9 +25,11 @@ export default class App extends React.Component {
     }
 
     return (
-      <View style={{ flex: 1 }}>
-        <Search />
-      </View>
+      <Provider store={store}>
+        <NavigationContainer>
+          <TabNavigator />
+        </NavigationContainer>
+      </Provider>
     );
   }
 
@@ -31,6 +37,9 @@ export default class App extends React.Component {
     const images = [
       require("./assets/icon.png"),
       require("./assets/logo.png"),
+      require("./assets/movies.png"),
+      require("./assets/series.png"),
+      require("./assets/episodes.png")
     ];
 
     const cacheImages = images.map((image) => {
