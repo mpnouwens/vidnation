@@ -1,0 +1,39 @@
+{
+  "files": {
+    "app.js": "/static/js/app.0a8d0b0f.chunk.js",
+    "app.js.map": "/static/js/app.0a8d0b0f.chunk.js.map",
+    "runtime~app.js": "/static/js/runtime~app.2e9f1821.js",
+    "runtime~app.js.map": "/static/js/runtime~app.2e9f1821.js.map",
+    "static/js/2.706e711d.chunk.js": "/static/js/2.706e711d.chunk.js",
+    "static/js/2.706e711d.chunk.js.map": "/static/js/2.706e711d.chunk.js.map",
+    "fonts/AntDesign.ttf": "/./fonts/AntDesign.ttf",
+    "fonts/Entypo.ttf": "/./fonts/Entypo.ttf",
+    "fonts/Feather.ttf": "/./fonts/Feather.ttf",
+    "fonts/FontAwesome.ttf": "/./fonts/FontAwesome.ttf",
+    "fonts/FontAwesome5_Brands.ttf": "/./fonts/FontAwesome5_Brands.ttf",
+    "fonts/FontAwesome5_Solid.ttf": "/./fonts/FontAwesome5_Solid.ttf",
+    "fonts/Fontisto.ttf": "/./fonts/Fontisto.ttf",
+    "fonts/Foundation.ttf": "/./fonts/Foundation.ttf",
+    "fonts/Ionicons.ttf": "/./fonts/Ionicons.ttf",
+    "fonts/MaterialCommunityIcons.ttf": "/./fonts/MaterialCommunityIcons.ttf",
+    "fonts/MaterialIcons.ttf": "/./fonts/MaterialIcons.ttf",
+    "fonts/SimpleLineIcons.ttf": "/./fonts/SimpleLineIcons.ttf",
+    "favicon-16.png": "/favicon-16.png",
+    "favicon-32.png": "/favicon-32.png",
+    "favicon.ico": "/favicon.ico",
+    "index.html": "/index.html",
+    "manifest.json": "/manifest.json",
+    "serve.json": "/serve.json",
+    "static/js/2.706e711d.chunk.js.LICENSE.txt": "/static/js/2.706e711d.chunk.js.LICENSE.txt",
+    "static/media/episodes.png": "/static/media/episodes.90e4eda9.png",
+    "static/media/icon.png": "/static/media/icon.e1862d89.png",
+    "static/media/logo.png": "/static/media/logo.af49000e.png",
+    "static/media/movies.png": "/static/media/movies.31d1ba52.png",
+    "static/media/series.png": "/static/media/series.27088644.png"
+  },
+  "entrypoints": [
+    "static/js/runtime~app.2e9f1821.js",
+    "static/js/2.706e711d.chunk.js",
+    "static/js/app.0a8d0b0f.chunk.js"
+  ]
+}

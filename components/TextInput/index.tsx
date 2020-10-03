@@ -6,6 +6,8 @@ type TextInputProps = {
   onChangeText: any;
   padding: number;
   marginBottom?: number;
+  marginRight?: number;
+  marginLeft?: number;
   secureTextEntry?: boolean;
   onTouchStart?: any;
   backgroundColor: string;
@@ -19,6 +21,8 @@ const TextInput: FunctionComponent<TextInputProps> = ({
   onChangeText,
   padding,
   marginBottom,
+  marginRight,
+  marginLeft,
   secureTextEntry,
   onTouchStart,
   backgroundColor,
@@ -37,7 +41,9 @@ const TextInput: FunctionComponent<TextInputProps> = ({
         fontSize: fontSize,
         height: 60,
         borderColor: borderColor,
-        width: "100%"
+        width: "75%",
+        marginRight: marginRight,
+        marginLeft: marginLeft
       }}
       placeholder={placeholder}
       onChangeText={onChangeText}
