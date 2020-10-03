@@ -5,7 +5,7 @@ import {
 } from "@expo/vector-icons";
 import { StyleSheet, Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Movies, Series, Episodes } from "../screens";
+import { Movies, Series } from "../screens";
 import { enableScreens } from "react-native-screens";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -37,19 +37,6 @@ const SeriesStackScreen = () => {
                 options={{ title: <Image source={require("../assets/logo.png")} style={styles.logo} /> }}
             />
         </SeriesStack.Navigator>
-    );
-};
-
-const EpisodeStack = createStackNavigator();
-const EpisodeStackScreen = () => {
-    return (
-        <EpisodeStack.Navigator>
-            <EpisodeStack.Screen
-                name="Episodes"
-                component={Episodes}
-                options={{ title: <Image source={require("../assets/logo.png")} style={styles.logo} /> }}
-            />
-        </EpisodeStack.Navigator>
     );
 };
 
@@ -91,20 +78,6 @@ function MyTabs() {
                         <MaterialCommunityIcons
                             name="television-box"
                             size={29}
-                            color={focused ? "#EE1E53" : "#CDCDCD"}
-                        />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="Notifications"
-                component={EpisodeStackScreen}
-                options={{
-                    tabBarLabel: "Notifications",
-                    tabBarIcon: ({ focused }) => (
-                        <FontAwesome
-                            name="video-camera"
-                            size={26}
                             color={focused ? "#EE1E53" : "#CDCDCD"}
                         />
                     ),

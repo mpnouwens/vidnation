@@ -1,12 +1,11 @@
 import React from "react";
-import { View } from "react-native";
 import { Asset } from "expo-asset";
 import { AppLoading } from "expo";
 import { Provider } from "react-redux";
 import "redux";
 import { store } from "./store";
 import { NavigationContainer } from "@react-navigation/native";
-import TabNavigator from "./navigation/TabNavigator";
+import Routes from "./navigation";
 
 export default class App extends React.Component {
   state = {
@@ -27,7 +26,7 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <NavigationContainer>
-          <TabNavigator />
+          <Routes />
         </NavigationContainer>
       </Provider>
     );

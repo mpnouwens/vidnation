@@ -1,24 +1,74 @@
-import { createModel, Reducer } from '@rematch/core'
-import { RootModel } from './models'
+import { createModel, Reducer } from "@rematch/core";
+import { RootModel } from "./models";
 
 export const search = createModel<RootModel>()({
-    state: {},
-    reducers: {
-        searchText(state, searchText: string) {
-            return {
-                state,
-                searchText
-            }
-        }
+  state: {
+    searchMoviesText: "",
+    searchMoviesData: [],
+    searchSeriesText: "",
+    searchSeriesData: [],
+    masterDetailData: {},
+  },
+  reducers: {
+    searchMoviesText(state, searchMoviesText: string) {
+      return {
+        ...state,
+        searchMoviesText,
+      };
     },
-    effects: (dispatch) => ({
-        // handle state changes with impure functions.
-        // use async/await for async actions
-        async searchAsync(payload: string, state) {
-            console.log('This is current root state', payload);
-            console.log('This is current root state', state);
-            await new Promise(resolve => setTimeout(resolve, 1000))
-            dispatch.search.searchText(payload)
-        },
-    })
-})
+    searchMoviesData(state, payload: Object) {
+      return { ...state, ...payload };
+    },
+    searchSeriesText(state, searchSeriesText: string) {
+      return {
+        ...state,
+        searchSeriesText,
+      };
+    },
+    searchSeriesData(state, payload: Object) {
+      return { ...state, ...payload };
+    },
+    masterDetailData(state, payload: Object) {
+      return { ...state, ...payload };
+    },
+  },
+  effects: (dispatch) => ({
+    async searchSeriesAsync(payload: string, state) {
+      const response = await fetch(
+        `http://www.omdbapi.com/?apikey=597bf54e&s=${payload}&type=series`
+      )
+        .then((response) => response.json())
+        .then((responseJson) => {
+          dispatch.search.searchSeriesData({ searchSeriesData: responseJson });
+        })
+        .catch((error) => {
+          alert("error!");
+        });
+    },
+    async searchMoviesAsync(payload: string, state) {
+      const response = await fetch(
+        `http://www.omdbapi.com/?apikey=597bf54e&s=${payload}&type=movie`
+      )
+        .then((response) => response.json())
+        .then((responseJson) => {
+          dispatch.search.searchMoviesData({ searchMoviesData: responseJson });
+        })
+        .catch((error) => {
+          alert("error!");
+        });
+    },
+    async masterDetailAsync(payload: string, state) {
+      const response = await fetch(
+        `http://www.omdbapi.com/?apikey=597bf54e&i=${payload}&plot=full`
+      )
+        .then((response) => response.json())
+        .then((responseJson) => {
+          console.log("responseJson", responseJson);
+          dispatch.search.masterDetailData({ masterDetailData: responseJson });
+        })
+        .catch((error) => {
+          alert("error!");
+        });
+    },
+  }),
+});
