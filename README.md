@@ -23,7 +23,7 @@ in the project directory, you can run:
 1. install the dependencies: `yarn`
 2. run the project in browser: `yarn start`
 
-Runs the app in the development mode.<br />
+runs the app in the development mode.<br />
 
 ## how to use the thing 🤳
 * open the app up
@@ -55,7 +55,7 @@ To contribute to vidnation, follow these steps:
 
 ### [redux rematch](https://rematch.netlify.app)
 
-- What is it?
+- what is it?
 
 redux rematch is Redux best practices without the boilerplate. No more action types, action creators, switch statements or thunks.
 
@@ -63,11 +63,11 @@ redux is an amazing state management tool, supported by a healthy middleware eco
 
 - why did i use it?
 
-I have had experience with redux rematch - it was good to relook into it and refresh my skills once again!
+i have had experience with redux rematch - it was good to relook into it and refresh my skills once again!
 
 ### [expo](https://docs.expo.io)
 
-- What is it?
+- what is it?
 
 expo is a framework and a platform for universal react applications. it is a set of tools and services built around React Native and native platforms that help you develop, build, deploy, and quickly iterate on iOS, Android, and web apps from the same javaScript/typeScript codebase.
 
@@ -77,7 +77,7 @@ i personally enjoy using expo because it is just so simple to implement features
 
 ### [typescript](https://www.typescriptlang.org)
 
-- What is it?
+- what is it?
 
 typescript is an open-source programming language developed and maintained by microsoft. it is a strict syntactical superset of javascript and adds optional static typing to the language. typescript is designed for development of large applications and transcompiles to javascript.
 
