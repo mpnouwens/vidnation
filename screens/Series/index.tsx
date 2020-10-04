@@ -4,7 +4,6 @@ import {
   Text,
   View,
   Image,
-  Button,
   ScrollView,
   TouchableOpacity,
 } from "react-native";
@@ -12,6 +11,8 @@ import { TextInput } from "../../components";
 import { connect } from "react-redux";
 import "redux";
 import { RootState, Dispatch } from "../../store";
+
+import { useTheme } from "../../theme/hooks";
 
 interface NavigationProps {
   navigation: any;
@@ -24,56 +25,101 @@ const mapState = (state: RootState) => ({
 });
 
 const mapDispatch = (dispatch: Dispatch) => ({
-  setSearchSeriesText: (searchSeriesText: string) => dispatch.search.searchSeriesText(searchSeriesText),
-  searchSeriesAsync: (searchSeriesText: string) => dispatch.search.searchSeriesAsync(searchSeriesText),
-  masterDetailAsync: (seriesText: string) => dispatch.search.masterDetailAsync(seriesText)
+  setSearchSeriesText: (searchSeriesText: string) =>
+    dispatch.search.searchSeriesText(searchSeriesText),
+  searchSeriesAsync: (searchSeriesText: string) =>
+    dispatch.search.searchSeriesAsync(searchSeriesText),
+  masterDetailAsync: (seriesText: string) =>
+    dispatch.search.masterDetailAsync(seriesText),
 });
 
 type StateProps = ReturnType<typeof mapState>;
 type DispatchProps = ReturnType<typeof mapDispatch>;
 type Props = StateProps & DispatchProps & NavigationProps;
 
+function withMyHook(Component) {
+  return function WrappedComponent(props) {
+    const colors = useTheme();
+    return <Component {...props} colors={colors} />;
+  };
+}
+
 class Series extends React.Component<Props> {
   render() {
     const masterDetailData = this.props.searchSeriesData;
-    const renderSeriesContent = () => {
+    const colors = this.props.colors;
+
+    const searchSeriesAsync = () => {
       return (
         masterDetailData.Search &&
         masterDetailData.Search.map &&
         masterDetailData.Search.map(
           (
-            item: { Title: string; Poster: string; imdbID: string },
+            item: {
+              Title: string;
+              Poster: string;
+              imdbID: string;
+              Year: string;
+            },
             i: number
           ) => {
             return (
               <TouchableOpacity
                 key={i}
                 onPress={() => {
-                    this.props.masterDetailAsync(item && item.imdbID).then(() => {
-                        this.props.navigation.navigate("MasterDetail", { masterDetailObj: this.props.masterDetailData, myTitle: item && item.Title});
-                    })
-                   
+                  this.props.masterDetailAsync(item && item.imdbID).then(() => {
+                    this.props.navigation.navigate("MasterDetail", {
+                      masterDetailObj: this.props.masterDetailData,
+                      myTitle: item && item.Title,
+                    });
+                  });
                 }}
                 style={{
                   flexDirection: "row",
-                  width: "100%",
-                  paddingLeft: 15,
-                  paddingTop: 5,
                   marginBottom: 10,
+                  backgroundColor: colors.colors.navBackground,
+                  borderRadius: 10,
                 }}
               >
                 {item && item.Poster ? (
                   <Image
                     source={{ uri: item && item.Poster }}
-                    style={{ height: 200, width: 150, borderRadius: 10 }}
+                    style={{
+                      height: 150,
+                      width: 100,
+                      borderRadius: 10,
+                      margin: 10,
+                    }}
                   />
                 ) : (
                   <Text>No image</Text>
                 )}
 
-                <Text style={{ marginLeft: 15 }} key={i}>
-                  {item && item.Title}
-                </Text>
+                <View
+                  style={{
+                    marginLeft: 5,
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    width: "auto",
+                  }}
+                >
+                  <Text
+                    numberOfLines={1}
+                    style={{
+                      fontSize: 20,
+                      fontWeight: "bold",
+                      color: colors.colors.textColour,
+                    }}
+                    key={i}
+                  >
+                    {item && item.Title}
+                  </Text>
+                  <Text
+                    style={{ marginTop: 5, color: colors.colors.textColour }}
+                  >
+                    Year - {item && item.Year}
+                  </Text>
+                </View>
               </TouchableOpacity>
             );
           }
@@ -82,52 +128,72 @@ class Series extends React.Component<Props> {
     };
 
     return (
-      <>
-        <View style={styles.container}>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              width: "100%",
+      <View
+        style={[
+          styles.container,
+          {
+            backgroundColor: colors.colors.backgroundColour,
+          },
+        ]}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <TextInput
+            placeholder="Search series"
+            onChangeText={(input: string) => {
+              this.props.setSearchSeriesText(input);
+            }}
+            backgroundColor={colors.colors.searchColourBackground}
+            color={colors.colors.textColour}
+            borderColor="gray"
+            fontSize={16}
+            padding={10}
+            marginLeft={10}
+            marginBottom={5}
+            marginRight={10}
+          />
+          <TouchableOpacity
+            style={{ width: "20%" }}
+            onPress={() => {
+              this.props.searchSeriesAsync(this.props.searchSeriesText);
             }}
           >
-            <TextInput
-              placeholder="Search series"
-              onChangeText={(input: string) => {
-                this.props.setSearchSeriesText(input);
+            <Text
+              style={{
+                paddingLeft: 20,
+                color: colors.colors.textColour,
+                fontSize: 18,
+                width: 100,
               }}
-              backgroundColor="#E3E3E3"
-              color="black"
-              borderColor="gray"
-              fontSize={16}
-              padding={10}
-              marginLeft={10}
-              marginBottom={5}
-              marginRight={10}
-            />
-            <Button
-              color="black"
-              title="Search"
-              onPress={() => this.props.searchSeriesAsync(this.props.searchSeriesText)}
-            />
-          </View>
-          <ScrollView style={{ width: "100%" }}>
-            {masterDetailData.Search ? (
-              renderSeriesContent()
-            ) : (
-              <View style={{ alignItems: "center", justifyContent: "center" }}>
-                <Image
-                  source={require("../../assets/series.png")}
-                  style={styles.logo}
-                />
-                <Text style={{ fontSize: 18 }}>
-                  Find your favourite series.
-                </Text>
-              </View>
-            )}
-          </ScrollView>
+            >
+              Search
+            </Text>
+          </TouchableOpacity>
         </View>
-      </>
+        {masterDetailData.Search ? (
+          <ScrollView style={{ width: "100%" }}>
+            {searchSeriesAsync()}
+          </ScrollView>
+        ) : (
+          <View
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              height: "85%",
+            }}
+          >
+            <Image source={colors.colors.seriesImage} style={styles.logo} />
+            <Text style={{ fontSize: 18, color: colors.colors.textColour }}>
+              Find your favourite series.
+            </Text>
+          </View>
+        )}
+      </View>
     );
   }
 }
@@ -136,9 +202,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    marginLeft: 10,
-    marginTop: 10,
-    marginRight: 10,
   },
   logo: {
     width: 300,
@@ -147,4 +210,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(mapState, mapDispatch)(Series);
+export default connect(mapState, mapDispatch)(withMyHook(Series));

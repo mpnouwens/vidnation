@@ -8,6 +8,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Movies, Series } from "../screens";
 import { enableScreens } from "react-native-screens";
 import { createStackNavigator } from "@react-navigation/stack";
+import { useTheme } from "../theme/hooks";
 
 enableScreens();
 const Tab = createBottomTabNavigator();
@@ -41,7 +42,8 @@ const SeriesStackScreen = () => {
 };
 
 function MyTabs() {
-    //   const { colors } = useTheme();
+    const { colors } = useTheme();
+    
     return (
         <Tab.Navigator
             initialRouteName="Discover"
@@ -49,9 +51,10 @@ function MyTabs() {
                 showLabel: false,
                 activeTintColor: "#84B5F7",
                 inactiveTintColor: "#CDCDCD",
-                // style: {
-                //   backgroundColor: colors.keyBoardAvoidingViewColor,
-                // },
+                style: {
+                  backgroundColor: colors.navBackground,
+                  borderTopColor: colors.navBackground
+                },
             }}
         >
             <Tab.Screen

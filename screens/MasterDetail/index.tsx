@@ -1,52 +1,60 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
-import { connect } from "react-redux";
+import { Text, View, Image, ScrollView } from "react-native";
 import "redux";
-import { RootState, Dispatch } from "../../store";
+import { SafeAreaView } from "../../components";
+import { useTheme } from "../../theme/hooks";
 
 interface NavigationProps {
   navigation: any;
   route: any;
 }
 
-const mapState = (state: RootState) => ({
-  searchData: state.search.seriesData,
-});
+type Props = NavigationProps;
 
-const mapDispatch = (dispatch: Dispatch) => ({
-  setSearchText: (searchText: string) => dispatch.search.searchText(searchText),
-  searchAsync: (searchText: string) => dispatch.search.searchAsync(searchText),
-});
-
-type StateProps = ReturnType<typeof mapState>;
-type DispatchProps = ReturnType<typeof mapDispatch>;
-type Props = StateProps & DispatchProps & NavigationProps;
-
-class MasterDetail extends React.Component<Props> {
-  render() {
-    const { masterDetailObj } = this.props.route.params;
-    console.log("masterDetailObj", masterDetailObj);
-
-    const actors = masterDetailObj?.Actors.split(",");
-    const genre = masterDetailObj?.Genre.split(",");
-
-    return (
+const Content = (data: any) => {
+  console.log(data);
+  const { colors } = useTheme();
+  console.log("masterDetailObj", data);
+  const actors = data.data?.Actors.split(",");
+  const genre = data.data?.Genre.split(",");
+  return (
+    <SafeAreaView>
       <ScrollView>
         <View style={{ alignItems: "center", marginTop: 20, width: "100%" }}>
           <Image
-            source={{ uri: masterDetailObj?.Poster }}
+            source={{ uri: data.data?.Poster }}
             style={{ height: 350, width: 250, borderRadius: 10 }}
           />
         </View>
-
         <View style={{ paddingLeft: 20 }}>
-          <Text style={{ fontSize: 25, fontWeight: "bold", marginTop: 10 }}>
+          <Text
+            style={{
+              fontSize: 25,
+              fontWeight: "bold",
+              marginTop: 10,
+              color: colors.textColour,
+            }}
+          >
             Plot
           </Text>
-          <Text style={{ padding: 20, fontSize: 18 }}>
-            {masterDetailObj?.Plot}
+          <Text
+            style={{
+              paddingTop: 20,
+              paddingRight: 10,
+              fontSize: 18,
+              color: colors.textColour,
+            }}
+          >
+            {data.data?.Plot}
           </Text>
-          <Text style={{ fontSize: 25, fontWeight: "bold", marginTop: 10 }}>
+          <Text
+            style={{
+              fontSize: 25,
+              fontWeight: "bold",
+              marginTop: 10,
+              color: colors.textColour,
+            }}
+          >
             Genre
           </Text>
           <View
@@ -54,7 +62,6 @@ class MasterDetail extends React.Component<Props> {
               flexDirection: "row",
               width: "100%",
               flexWrap: "wrap",
-              justifyContent: "center",
               marginTop: 20,
             }}
           >
@@ -67,7 +74,7 @@ class MasterDetail extends React.Component<Props> {
                     height: 40,
                     width: "auto",
                     borderColor: "#E3E3E3",
-                    backgroundColor: "#E3E3E3",
+                    backgroundColor: colors.badgeColourBackground,
                     borderWidth: 2,
                     borderRadius: 10,
                     alignItems: "center",
@@ -82,16 +89,21 @@ class MasterDetail extends React.Component<Props> {
               );
             })}
           </View>
-          <Text style={{ fontSize: 25, fontWeight: "bold", marginTop: 10 }}>
+          <Text
+            style={{
+              fontSize: 25,
+              fontWeight: "bold",
+              marginTop: 10,
+              color: colors.textColour,
+            }}
+          >
             Actors
           </Text>
-
           <View
             style={{
               flexDirection: "row",
               width: "100%",
               flexWrap: "wrap",
-              justifyContent: "center",
               marginTop: 20,
             }}
           >
@@ -119,24 +131,19 @@ class MasterDetail extends React.Component<Props> {
               );
             })}
           </View>
-          <Text style={{ marginBottom: 50 }}>{masterDetailObj?.Year}</Text>
+          <Text style={{ marginBottom: 50 }}>{data.data?.Year}</Text>
         </View>
       </ScrollView>
-    );
+    </SafeAreaView>
+  );
+};
+
+class MasterDetail extends React.Component<Props> {
+  render() {
+    const { masterDetailObj } = this.props.route.params;
+
+    return <Content data={masterDetailObj} />;
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    margin: 10,
-  },
-  logo: {
-    width: 300,
-    height: 300,
-    marginBottom: 5,
-  },
-});
-
-export default connect(mapState, mapDispatch)(MasterDetail);
+export default MasterDetail;

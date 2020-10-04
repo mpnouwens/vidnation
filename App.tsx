@@ -6,6 +6,8 @@ import "redux";
 import { store } from "./store";
 import { NavigationContainer } from "@react-navigation/native";
 import Routes from "./navigation";
+import { AppearanceProvider } from "react-native-appearance";
+import { StatusBar } from "./components";
 
 export default class App extends React.Component {
   state = {
@@ -24,11 +26,14 @@ export default class App extends React.Component {
     }
 
     return (
-      <Provider store={store}>
-        <NavigationContainer>
-          <Routes />
-        </NavigationContainer>
-      </Provider>
+      <AppearanceProvider>
+        <Provider store={store}>
+          <NavigationContainer>
+            <StatusBar/>
+            <Routes />
+          </NavigationContainer>
+        </Provider>
+      </AppearanceProvider>
     );
   }
 
@@ -38,7 +43,8 @@ export default class App extends React.Component {
       require("./assets/logo.png"),
       require("./assets/movies.png"),
       require("./assets/series.png"),
-      require("./assets/episodes.png")
+      require("./assets/moviesDark.png"),
+      require("./assets/seriesDark.png"),
     ];
 
     const cacheImages = images.map((image) => {
