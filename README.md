@@ -34,7 +34,7 @@ runs the app in the development mode.<br />
 * click on a result
 
 ## contributing to vidnation
-To contribute to vidnation, follow these steps:
+to contribute to vidnation, follow these steps:
 
 1. fork this repository.
 2. create a branch: `git checkout -b dev`.
