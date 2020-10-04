@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { TextInput as VTextInput } from "react-native";
+import { TextInput as VTextInput, Platform } from "react-native";
 
 type TextInputProps = {
   placeholder: string;
@@ -39,16 +39,17 @@ const TextInput: FunctionComponent<TextInputProps> = ({
         borderRadius: 10,
         padding: padding,
         fontSize: fontSize,
-        height: 60,
+        height: 50,
         borderColor: borderColor,
-        width: "75%",
+        width: Platform.OS === "web" ? "100%" : "65%",
         marginRight: marginRight,
-        marginLeft: marginLeft
+        marginLeft: marginLeft,
       }}
       placeholder={placeholder}
       onChangeText={onChangeText}
       secureTextEntry={secureTextEntry}
       onTouchStart={onTouchStart}
+      placeholderTextColor="gray"
     />
   );
 };
