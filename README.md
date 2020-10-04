@@ -53,11 +53,11 @@ To contribute to vidnation, follow these steps:
 
 ## the tech used 🦾
 
-### redux rematch
+### [redux rematch](https://rematch.netlify.app)
 
 - What is it?
 
-[rematch](https://rematch.netlify.app) is Redux best practices without the boilerplate. No more action types, action creators, switch statements or thunks.
+redux rematch is Redux best practices without the boilerplate. No more action types, action creators, switch statements or thunks.
 
 redux is an amazing state management tool, supported by a healthy middleware ecosystem and excellent devtools. rematch builds upon Redux by reducing boilerplate and enforcing best practices. it provides the following features:
 
