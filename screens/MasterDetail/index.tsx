@@ -158,8 +158,8 @@ const Content = (data: any) => {
                     flexDirection: "column",
                     height: 60,
                     width: "auto",
-                    borderColor: "#E3E3E3",
-                    backgroundColor: "#E3E3E3",
+                    borderColor: colors.searchColourBackground,
+                    backgroundColor: colors.searchColourBackground,
                     borderWidth: 2,
                     borderRadius: 10,
                     alignItems: "center",
@@ -169,8 +169,16 @@ const Content = (data: any) => {
                     padding: 10,
                   }}
                 >
-                  <Text>{rating.Source}</Text>
-                  <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+                  <Text style={{ color: colors.textColour }}>
+                    {rating.Source}
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      fontWeight: "bold",
+                      color: colors.textColour,
+                    }}
+                  >
                     {rating.Value}
                   </Text>
                 </View>
@@ -203,8 +211,8 @@ const Content = (data: any) => {
                     flexDirection: "row",
                     height: 40,
                     width: "auto",
-                    borderColor: "#E3E3E3",
-                    backgroundColor: colors.badgeColourBackground,
+                    borderColor: colors.searchColourBackground,
+                    backgroundColor: colors.searchColourBackground,
                     borderWidth: 2,
                     borderRadius: 10,
                     alignItems: "center",
@@ -214,7 +222,7 @@ const Content = (data: any) => {
                     padding: 5,
                   }}
                 >
-                  <Text>{genre}</Text>
+                  <Text style={{ color: colors.textColour }}>{genre}</Text>
                 </View>
               );
             })}
@@ -245,8 +253,8 @@ const Content = (data: any) => {
                     flexDirection: "row",
                     height: 40,
                     width: "auto",
-                    borderColor: "#E3E3E3",
-                    backgroundColor: "#E3E3E3",
+                    borderColor: colors.searchColourBackground,
+                    backgroundColor: colors.searchColourBackground,
                     borderWidth: 2,
                     borderRadius: 10,
                     alignItems: "center",
@@ -256,7 +264,7 @@ const Content = (data: any) => {
                     padding: 5,
                   }}
                 >
-                  <Text>{actor}</Text>
+                  <Text style={{ color: colors.textColour }}>{actor}</Text>
                 </View>
               );
             })}
