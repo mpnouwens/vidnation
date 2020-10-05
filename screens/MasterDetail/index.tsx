@@ -12,11 +12,11 @@ interface NavigationProps {
 type Props = NavigationProps;
 
 const Content = (data: any) => {
-  console.log(data);
   const { colors } = useTheme();
-  console.log("masterDetailObj", data);
   const actors = data.data?.Actors.split(",");
   const genre = data.data?.Genre.split(",");
+  const ratings = data.data?.Ratings;
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -26,12 +26,97 @@ const Content = (data: any) => {
             style={{ height: 350, width: 250, borderRadius: 10 }}
           />
         </View>
+        <View
+          style={{
+            paddingLeft: 25,
+            paddingRight: 25,
+            marginTop: 20,
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <View>
+            <Text
+              style={{
+                color: colors.textColour,
+              }}
+            >
+              Year
+            </Text>
+            <Text
+              style={{
+                marginBottom: 20,
+                color: colors.textColour,
+                fontSize: 18,
+                fontWeight: "bold",
+              }}
+            >
+              {data.data?.Year}
+            </Text>
+          </View>
+          <View>
+            <Text
+              style={{
+                color: colors.textColour,
+              }}
+            >
+              Language
+            </Text>
+            <Text
+              style={{
+                marginBottom: 20,
+                color: colors.textColour,
+                fontSize: 18,
+                fontWeight: "bold",
+              }}
+            >
+              {data.data?.Language}
+            </Text>
+          </View>
+          <View>
+            <Text
+              style={{
+                color: colors.textColour,
+              }}
+            >
+              Rated
+            </Text>
+            <Text
+              style={{
+                marginBottom: 20,
+                color: colors.textColour,
+                fontSize: 18,
+                fontWeight: "bold",
+              }}
+            >
+              {data.data?.Rated}
+            </Text>
+          </View>
+          <View>
+            <Text
+              style={{
+                color: colors.textColour,
+              }}
+            >
+              Country
+            </Text>
+            <Text
+              style={{
+                marginBottom: 20,
+                color: colors.textColour,
+                fontSize: 18,
+                fontWeight: "bold",
+              }}
+            >
+              {data.data?.Country}
+            </Text>
+          </View>
+        </View>
         <View style={{ paddingLeft: 20 }}>
           <Text
             style={{
               fontSize: 25,
               fontWeight: "bold",
-              marginTop: 10,
               color: colors.textColour,
             }}
           >
@@ -47,6 +132,51 @@ const Content = (data: any) => {
           >
             {data.data?.Plot}
           </Text>
+          <Text
+            style={{
+              fontSize: 25,
+              fontWeight: "bold",
+              marginTop: 15,
+              color: colors.textColour,
+            }}
+          >
+            Rating
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              width: "100%",
+              flexWrap: "wrap",
+              marginTop: 20,
+            }}
+          >
+            {ratings.map((rating: string, i: number) => {
+              return (
+                <View
+                  key={i}
+                  style={{
+                    flexDirection: "column",
+                    height: 60,
+                    width: "auto",
+                    borderColor: "#E3E3E3",
+                    backgroundColor: "#E3E3E3",
+                    borderWidth: 2,
+                    borderRadius: 10,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginRight: 10,
+                    marginBottom: 10,
+                    padding: 10,
+                  }}
+                >
+                  <Text>{rating.Source}</Text>
+                  <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+                    {rating.Value}
+                  </Text>
+                </View>
+              );
+            })}
+          </View>
           <Text
             style={{
               fontSize: 25,
@@ -131,7 +261,6 @@ const Content = (data: any) => {
               );
             })}
           </View>
-          <Text style={{ marginBottom: 50 }}>{data.data?.Year}</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
