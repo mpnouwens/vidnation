@@ -44,11 +44,26 @@ to contribute to vidnation, follow these steps:
 
 ## screenshots 📱
 
+### Light mode
+
 <div style="flex-direction: row"}>
-  <img src="https://i.imgur.com/Kflt16W.png" width="350" alt="vidnation">
-  <img src="https://i.imgur.com/aRQ7pyY.png" width="350" alt="vidnation">
-  <img src="https://i.imgur.com/WjF5uHf.png" width="350" alt="vidnation">
-  <img src="https://i.imgur.com/MrMo3JL.png" width="350" alt="vidnation">
+  <img src="https://i.imgur.com/wVkjGIB.png" width="350" alt="vidnation">
+  <img src="https://i.imgur.com/dROjri3.png" width="350" alt="vidnation">
+  <img src="https://i.imgur.com/atVMm2S.png" width="350" alt="vidnation">
+  <img src="https://i.imgur.com/Lq4eGnb.png" width="350" alt="vidnation">
+  <img src="https://i.imgur.com/BnWBqxC.png" width="350" alt="vidnation">
+  <img src="https://i.imgur.com/5jtjpnc.png" width="350" alt="vidnation">
+</div>
+
+### Dark mode
+
+<div style="flex-direction: row"}>
+  <img src="https://i.imgur.com/Kmo8LLl.png" width="350" alt="vidnation">
+  <img src="https://i.imgur.com/oc2jg0s.png" width="350" alt="vidnation">
+  <img src="https://i.imgur.com/Z1dE0Eb.png" width="350" alt="vidnation">
+  <img src="https://i.imgur.com/rvwiK6Q.png" width="350" alt="vidnation">
+  <img src="https://i.imgur.com/6Xvhox3.png" width="350" alt="vidnation">
+  <img src="https://i.imgur.com/ygMIByF.png" width="350" alt="vidnation">
 </div>
 
 ## the tech used 🦾
