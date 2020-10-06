@@ -6,7 +6,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  Platform
+  Platform,
 } from "react-native";
 import { TextInput } from "../../components";
 import { connect } from "react-redux";
@@ -81,19 +81,20 @@ class Movies extends React.Component<Props> {
                   borderRadius: 10,
                 }}
               >
-                {item && item.Poster ? (
-                  <Image
-                    source={{ uri: item && item.Poster }}
-                    style={{
-                      height: Platform.OS === "web" ? 300 : 150,
-                      width: Platform.OS === "web" ? 200 : 100,
-                      borderRadius: 10,
-                      margin: 10,
-                    }}
-                  />
-                ) : (
-                  <Text>No image</Text>
-                )}
+                <Image
+                  source={{
+                    uri:
+                      item && item.Poster !== "N/A"
+                        ? item && item.Poster
+                        : "https://i.imgur.com/P7wGCmV.png",
+                  }}
+                  style={{
+                    height: Platform.OS === "web" ? 300 : 150,
+                    width: Platform.OS === "web" ? 200 : 100,
+                    borderRadius: 10,
+                    margin: 10,
+                  }}
+                />
 
                 <View
                   style={{

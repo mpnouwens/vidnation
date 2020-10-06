@@ -81,19 +81,20 @@ class Series extends React.Component<Props> {
                   borderRadius: 10,
                 }}
               >
-                {item && item.Poster ? (
-                  <Image
-                    source={{ uri: item && item.Poster }}
-                    style={{
-                      height: 150,
-                      width: 100,
-                      borderRadius: 10,
-                      margin: 10,
-                    }}
-                  />
-                ) : (
-                  <Text>No image</Text>
-                )}
+                <Image
+                  source={{
+                    uri:
+                      item && item.Poster !== "N/A"
+                        ? item && item.Poster
+                        : "https://i.imgur.com/P7wGCmV.png",
+                  }}
+                  style={{
+                    height: 150,
+                    width: 100,
+                    borderRadius: 10,
+                    margin: 10,
+                  }}
+                />
 
                 <View
                   style={{

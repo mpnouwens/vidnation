@@ -22,7 +22,12 @@ const Content = (data: any) => {
       <ScrollView>
         <View style={{ alignItems: "center", marginTop: 20, width: "100%" }}>
           <Image
-            source={{ uri: data.data?.Poster }}
+            source={{
+              uri:
+                data.data?.Poster !== "N/A"
+                  ? data.data?.Poster
+                  : "https://i.imgur.com/P7wGCmV.png",
+            }}
             style={{ height: 350, width: 250, borderRadius: 10 }}
           />
         </View>
