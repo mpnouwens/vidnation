@@ -44,7 +44,7 @@ to contribute to vidnation, follow these steps:
 
 ## screenshots 📱
 
-### Light mode
+### light mode
 
 <div style="flex-direction: row"}>
   <img src="https://i.imgur.com/wVkjGIB.png" width="350" alt="vidnation">
@@ -55,7 +55,7 @@ to contribute to vidnation, follow these steps:
   <img src="https://i.imgur.com/5jtjpnc.png" width="350" alt="vidnation">
 </div>
 
-### Dark mode
+### dark mode
 
 <div style="flex-direction: row"}>
   <img src="https://i.imgur.com/Kmo8LLl.png" width="350" alt="vidnation">
