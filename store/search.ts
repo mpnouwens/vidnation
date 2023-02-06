@@ -35,7 +35,7 @@ export const search = createModel<RootModel>()({
   effects: (dispatch) => ({
     async searchSeriesAsync(payload: string, state) {
       const response = await fetch(
-        `http://www.omdbapi.com/?apikey=597bf54e&s=${payload}&type=series`
+        `https://www.omdbapi.com/?apikey=597bf54e&s=${payload}&type=series`
       )
         .then((response) => response.json())
         .then((responseJson) => {
@@ -47,7 +47,7 @@ export const search = createModel<RootModel>()({
     },
     async searchMoviesAsync(payload: string, state) {
       const response = await fetch(
-        `http://www.omdbapi.com/?apikey=597bf54e&s=${payload}&type=movie`
+        `https://www.omdbapi.com/?apikey=597bf54e&s=${payload}&type=movie`
       )
         .then((response) => response.json())
         .then((responseJson) => {
@@ -59,7 +59,7 @@ export const search = createModel<RootModel>()({
     },
     async masterDetailAsync(payload: string, state) {
       const response = await fetch(
-        `http://www.omdbapi.com/?apikey=597bf54e&i=${payload}&plot=full`
+        `https://www.omdbapi.com/?apikey=597bf54e&i=${payload}&plot=full`
       )
         .then((response) => response.json())
         .then((responseJson) => {
