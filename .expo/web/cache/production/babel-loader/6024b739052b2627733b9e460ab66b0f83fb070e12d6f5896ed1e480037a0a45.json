@@ -1,0 +1,1 @@
+{"ast":null,"code":"export*from\"./SplashScreen\";","map":{"version":3,"mappings":"AAAA","names":[],"sources":["/Users/michaeladmin/Documents/GitHub/vidnation/node_modules/expo-splash-screen/src/index.ts"],"sourcesContent":["export * from './SplashScreen';\n"]},"metadata":{},"sourceType":"module","externalDependencies":[]}
